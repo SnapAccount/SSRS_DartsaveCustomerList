@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ReportsPortal">
+      <DataSourceReference>ReportsPortal_Shared</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>062904e2-fd77-4f1f-b57a-a8e6ca6a1bf1</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Report_Info">
+      <Query>
+        <DataSourceName>ReportsPortal</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Portal.usp_Retrieve_Report_Info</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ReportID">
+          <DataField>ReportID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Report">
+          <DataField>Report</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportTitle">
+          <DataField>ReportTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportDescription">
+          <DataField>ReportDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportOwner">
+          <DataField>ReportOwner</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportVersion">
+          <DataField>ReportVersion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportThemeID">
+          <DataField>ReportThemeID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!Report.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Fields!Report.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+    <DataSet Name="Report_Settings">
+      <Query>
+        <DataSourceName>ReportsPortal</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@ThemeID">
+            <Value>=Parameters!ReportThemeID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Portal.usp_Retrieve_Theme_Settings</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ThemeID">
+          <DataField>ThemeID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Text_Copywrite_Value">
+          <DataField>Text_Copywrite_Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Family">
+          <DataField>Text_Title_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Size">
+          <DataField>Text_Title_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Colour">
+          <DataField>Text_Title_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Bold">
+          <DataField>Text_Title_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Italic">
+          <DataField>Text_Title_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Background_Colour">
+          <DataField>Text_Title_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Line_Colour">
+          <DataField>Text_Title_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Line_Width">
+          <DataField>Text_Title_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Family">
+          <DataField>Text_Header_1_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Size">
+          <DataField>Text_Header_1_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Colour">
+          <DataField>Text_Header_1_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Bold">
+          <DataField>Text_Header_1_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Italic">
+          <DataField>Text_Header_1_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Background_Colour">
+          <DataField>Text_Header_1_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Line_Colour">
+          <DataField>Text_Header_1_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Line_Width">
+          <DataField>Text_Header_1_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Family">
+          <DataField>Text_Header_2_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Size">
+          <DataField>Text_Header_2_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Colour">
+          <DataField>Text_Header_2_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Bold">
+          <DataField>Text_Header_2_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Italic">
+          <DataField>Text_Header_2_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Background_Colour">
+          <DataField>Text_Header_2_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Line_Colour">
+          <DataField>Text_Header_2_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Line_Width">
+          <DataField>Text_Header_2_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Family">
+          <DataField>Text_Header_Description_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Size">
+          <DataField>Text_Header_Description_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Colour">
+          <DataField>Text_Header_Description_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Bold">
+          <DataField>Text_Header_Description_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Italic">
+          <DataField>Text_Header_Description_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Fill_Colour">
+          <DataField>Text_Header_Description_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Line_Colour">
+          <DataField>Text_Header_Description_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Line_Width">
+          <DataField>Text_Header_Description_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Family">
+          <DataField>Text_Normal_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Size">
+          <DataField>Text_Normal_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Colour">
+          <DataField>Text_Normal_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Bold">
+          <DataField>Text_Normal_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Italic">
+          <DataField>Text_Normal_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Background_Colour">
+          <DataField>Text_Normal_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Line_Colour">
+          <DataField>Text_Normal_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Line_Width">
+          <DataField>Text_Normal_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Family">
+          <DataField>Text_Small_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Size">
+          <DataField>Text_Small_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Colour">
+          <DataField>Text_Small_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Bold">
+          <DataField>Text_Small_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Italic">
+          <DataField>Text_Small_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Background_Colour">
+          <DataField>Text_Small_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Line_Colour">
+          <DataField>Text_Small_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Line_Width">
+          <DataField>Text_Small_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Family">
+          <DataField>Text_Dashboard_Header_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Size">
+          <DataField>Text_Dashboard_Header_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Colour">
+          <DataField>Text_Dashboard_Header_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Bold">
+          <DataField>Text_Dashboard_Header_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Italic">
+          <DataField>Text_Dashboard_Header_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Family">
+          <DataField>Text_Dashboard_Normal_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Size">
+          <DataField>Text_Dashboard_Normal_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Colour">
+          <DataField>Text_Dashboard_Normal_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Bold">
+          <DataField>Text_Dashboard_Normal_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Italic">
+          <DataField>Text_Dashboard_Normal_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Family">
+          <DataField>Text_Dashboard_Large_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Size">
+          <DataField>Text_Dashboard_Large_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Colour">
+          <DataField>Text_Dashboard_Large_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Bold">
+          <DataField>Text_Dashboard_Large_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Italic">
+          <DataField>Text_Dashboard_Large_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Family">
+          <DataField>Tablix_Header_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Size">
+          <DataField>Tablix_Header_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Colour">
+          <DataField>Tablix_Header_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Bold">
+          <DataField>Tablix_Header_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Italic">
+          <DataField>Tablix_Header_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Family">
+          <DataField>Tablix_Row_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Size">
+          <DataField>Tablix_Row_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Colour">
+          <DataField>Tablix_Row_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Bold">
+          <DataField>Tablix_Row_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Italic">
+          <DataField>Tablix_Row_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Family">
+          <DataField>Tablix_Footer_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Size">
+          <DataField>Tablix_Footer_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Colour">
+          <DataField>Tablix_Footer_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Bold">
+          <DataField>Tablix_Footer_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Italic">
+          <DataField>Tablix_Footer_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Family">
+          <DataField>Tablix_Group_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Size">
+          <DataField>Tablix_Group_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Colour">
+          <DataField>Tablix_Group_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Bold">
+          <DataField>Tablix_Group_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Italic">
+          <DataField>Tablix_Group_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Family">
+          <DataField>Menu_Main_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Size">
+          <DataField>Menu_Main_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Colour">
+          <DataField>Menu_Main_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Bold">
+          <DataField>Menu_Main_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Italic">
+          <DataField>Menu_Main_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Fill_Colour">
+          <DataField>Menu_Main_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Line_Colour">
+          <DataField>Menu_Main_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Line_Width">
+          <DataField>Menu_Main_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Family">
+          <DataField>Menu_Sub_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Size">
+          <DataField>Menu_Sub_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Colour">
+          <DataField>Menu_Sub_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Bold">
+          <DataField>Menu_Sub_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Italic">
+          <DataField>Menu_Sub_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Fill_Colour">
+          <DataField>Menu_Sub_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Line_Colour">
+          <DataField>Menu_Sub_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Line_Width">
+          <DataField>Menu_Sub_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rectangle_Main_Fill_Colour">
+          <DataField>Rectangle_Main_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rectangle_Main_Line_Colour">
+          <DataField>Rectangle_Main_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rectangle_Main_Line_Width">
+          <DataField>Rectangle_Main_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page_Header_Background_Colour">
+          <DataField>Page_Header_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page_Normal_Background_Colour">
+          <DataField>Page_Normal_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page_Footer_Background_Colour">
+          <DataField>Page_Footer_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Fill_Colour">
+          <DataField>Tablix_Header_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Line_Colour">
+          <DataField>Tablix_Header_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Line_Width">
+          <DataField>Tablix_Header_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Fill_Colour">
+          <DataField>Tablix_Row_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Line_Colour">
+          <DataField>Tablix_Row_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Line_Width">
+          <DataField>Tablix_Row_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt1_Fill_Colour">
+          <DataField>Tablix_Row_Alt1_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt1_Line_Colour">
+          <DataField>Tablix_Row_Alt1_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt1_Line_Width">
+          <DataField>Tablix_Row_Alt1_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt2_Fill_Colour">
+          <DataField>Tablix_Row_Alt2_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt2_Line_Colour">
+          <DataField>Tablix_Row_Alt2_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt2_Line_Width">
+          <DataField>Tablix_Row_Alt2_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Red">
+          <DataField>Indication_Colour_Red</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Red_Light">
+          <DataField>Indication_Colour_Red_Light</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Amber">
+          <DataField>Indication_Colour_Amber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Green_Light">
+          <DataField>Indication_Colour_Green_Light</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Green">
+          <DataField>Indication_Colour_Green</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Blue">
+          <DataField>Transparent_Colour_Light_Blue</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Green">
+          <DataField>Transparent_Colour_Light_Green</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Red">
+          <DataField>Transparent_Colour_Light_Red</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Pink">
+          <DataField>Transparent_Colour_Light_Pink</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Orange">
+          <DataField>Transparent_Colour_Light_Orange</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Purple">
+          <DataField>Transparent_Colour_Light_Purple</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Yellow">
+          <DataField>Transparent_Colour_Light_Yellow</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Teal">
+          <DataField>Transparent_Colour_Light_Teal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Brown">
+          <DataField>Transparent_Colour_Light_Brown</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Violet">
+          <DataField>Transparent_Colour_Light_Violet</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Logo_Snap_Medium">
+      <Query>
+        <DataSourceName>ReportsPortal</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Image">
+            <Value>="Snap_Small_Logo"</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Portal.usp_Retrieve_Image_Info</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Image">
+          <DataField>Image</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ImageURL">
+          <DataField>ImageURL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ImageDescription">
+          <DataField>ImageDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Image Name="Logo_Snap">
+            <Source>Embedded</Source>
+            <Value>Snap_Logo_Small</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.28787cm</Top>
+            <Left>41.91813cm</Left>
+            <Height>1.67cm</Height>
+            <Width>3.49cm</Width>
+            <ToolTip>=First(Fields!ImageDescription.Value, "Logo_Snap_Medium")</ToolTip>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!ReportTitle.Value, "Report_Info")</Value>
+                    <Style>
+                      <FontStyle>=First(Fields!Text_Title_Font_Italic.Value, "Report_Settings")</FontStyle>
+                      <FontFamily>=First(Fields!Text_Title_Font_Family.Value, "Report_Settings")</FontFamily>
+                      <FontSize>=First(Fields!Text_Title_Font_Size.Value, "Report_Settings")</FontSize>
+                      <FontWeight>=First(Fields!Text_Title_Font_Bold.Value, "Report_Settings")</FontWeight>
+                      <Color>=First(Fields!Text_Title_Font_Colour.Value, "Report_Settings")</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <ActionInfo>
+              <Actions>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>Portal_Dashboard</ReportName>
+                  </Drillthrough>
+                </Action>
+              </Actions>
+            </ActionInfo>
+            <Top>0.28787cm</Top>
+            <Left>0.28787cm</Left>
+            <Height>1.67cm</Height>
+            <Width>41.28792cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>0.85661in</Height>
+        <Style>
+          <BackgroundColor>=First(Fields!Page_Header_Background_Colour.Value, "Report_Settings")</BackgroundColor>
+        </Style>
+      </Body>
+      <Width>18in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Report">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=Globals!ReportName</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Report</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ReportThemeID">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>Report_Info</DataSetName>
+          <ValueField>ReportThemeID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>ReportThemeID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Report</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ReportThemeID</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Snap_Logo_Small">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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
+V4D+K8j/A8ssDAmr6oVFAAAAAElFTkSuQmCC</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>20286c24-7e45-44d0-be8f-27d44e7643db</rd:ReportID>
+</Report>

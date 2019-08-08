@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="ReportsPortal">
+      <DataSourceReference>ReportsPortal_Shared</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>474e69e2-069f-468a-b5ea-350e22c8c098</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Report_Info">
+      <Query>
+        <DataSourceName>ReportsPortal</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Portal.usp_Retrieve_Report_Info</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ReportID">
+          <DataField>ReportID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Report">
+          <DataField>Report</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportTitle">
+          <DataField>ReportTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportDescription">
+          <DataField>ReportDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportOwner">
+          <DataField>ReportOwner</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportVersion">
+          <DataField>ReportVersion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReportThemeID">
+          <DataField>ReportThemeID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!Report.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Fields!Report.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+    <DataSet Name="Report_Settings">
+      <Query>
+        <DataSourceName>ReportsPortal</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@ThemeID">
+            <Value>=Parameters!ReportThemeID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>Portal.usp_Retrieve_Theme_Settings</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ThemeID">
+          <DataField>ThemeID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Text_Copywrite_Value">
+          <DataField>Text_Copywrite_Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Family">
+          <DataField>Text_Title_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Size">
+          <DataField>Text_Title_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Colour">
+          <DataField>Text_Title_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Bold">
+          <DataField>Text_Title_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Font_Italic">
+          <DataField>Text_Title_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Background_Colour">
+          <DataField>Text_Title_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Line_Colour">
+          <DataField>Text_Title_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Title_Line_Width">
+          <DataField>Text_Title_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Family">
+          <DataField>Text_Header_1_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Size">
+          <DataField>Text_Header_1_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Colour">
+          <DataField>Text_Header_1_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Bold">
+          <DataField>Text_Header_1_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Font_Italic">
+          <DataField>Text_Header_1_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Background_Colour">
+          <DataField>Text_Header_1_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Line_Colour">
+          <DataField>Text_Header_1_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_1_Line_Width">
+          <DataField>Text_Header_1_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Family">
+          <DataField>Text_Header_2_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Size">
+          <DataField>Text_Header_2_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Colour">
+          <DataField>Text_Header_2_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Bold">
+          <DataField>Text_Header_2_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Font_Italic">
+          <DataField>Text_Header_2_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Background_Colour">
+          <DataField>Text_Header_2_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Line_Colour">
+          <DataField>Text_Header_2_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_2_Line_Width">
+          <DataField>Text_Header_2_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Family">
+          <DataField>Text_Header_Description_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Size">
+          <DataField>Text_Header_Description_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Colour">
+          <DataField>Text_Header_Description_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Bold">
+          <DataField>Text_Header_Description_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Font_Italic">
+          <DataField>Text_Header_Description_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Fill_Colour">
+          <DataField>Text_Header_Description_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Line_Colour">
+          <DataField>Text_Header_Description_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Header_Description_Line_Width">
+          <DataField>Text_Header_Description_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Family">
+          <DataField>Text_Normal_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Size">
+          <DataField>Text_Normal_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Colour">
+          <DataField>Text_Normal_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Bold">
+          <DataField>Text_Normal_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Font_Italic">
+          <DataField>Text_Normal_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Background_Colour">
+          <DataField>Text_Normal_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Line_Colour">
+          <DataField>Text_Normal_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Normal_Line_Width">
+          <DataField>Text_Normal_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Family">
+          <DataField>Text_Small_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Size">
+          <DataField>Text_Small_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Colour">
+          <DataField>Text_Small_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Bold">
+          <DataField>Text_Small_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Font_Italic">
+          <DataField>Text_Small_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Background_Colour">
+          <DataField>Text_Small_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Line_Colour">
+          <DataField>Text_Small_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Small_Line_Width">
+          <DataField>Text_Small_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Family">
+          <DataField>Text_Dashboard_Header_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Size">
+          <DataField>Text_Dashboard_Header_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Colour">
+          <DataField>Text_Dashboard_Header_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Bold">
+          <DataField>Text_Dashboard_Header_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Header_Font_Italic">
+          <DataField>Text_Dashboard_Header_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Family">
+          <DataField>Text_Dashboard_Normal_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Size">
+          <DataField>Text_Dashboard_Normal_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Colour">
+          <DataField>Text_Dashboard_Normal_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Bold">
+          <DataField>Text_Dashboard_Normal_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Normal_Font_Italic">
+          <DataField>Text_Dashboard_Normal_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Family">
+          <DataField>Text_Dashboard_Large_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Size">
+          <DataField>Text_Dashboard_Large_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Colour">
+          <DataField>Text_Dashboard_Large_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Bold">
+          <DataField>Text_Dashboard_Large_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Text_Dashboard_Large_Font_Italic">
+          <DataField>Text_Dashboard_Large_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Family">
+          <DataField>Tablix_Header_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Size">
+          <DataField>Tablix_Header_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Colour">
+          <DataField>Tablix_Header_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Bold">
+          <DataField>Tablix_Header_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Font_Italic">
+          <DataField>Tablix_Header_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Family">
+          <DataField>Tablix_Row_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Size">
+          <DataField>Tablix_Row_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Colour">
+          <DataField>Tablix_Row_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Bold">
+          <DataField>Tablix_Row_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Font_Italic">
+          <DataField>Tablix_Row_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Family">
+          <DataField>Tablix_Footer_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Size">
+          <DataField>Tablix_Footer_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Colour">
+          <DataField>Tablix_Footer_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Bold">
+          <DataField>Tablix_Footer_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Footer_Font_Italic">
+          <DataField>Tablix_Footer_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Family">
+          <DataField>Tablix_Group_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Size">
+          <DataField>Tablix_Group_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Colour">
+          <DataField>Tablix_Group_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Bold">
+          <DataField>Tablix_Group_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Group_Font_Italic">
+          <DataField>Tablix_Group_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Family">
+          <DataField>Menu_Main_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Size">
+          <DataField>Menu_Main_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Colour">
+          <DataField>Menu_Main_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Bold">
+          <DataField>Menu_Main_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Font_Italic">
+          <DataField>Menu_Main_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Fill_Colour">
+          <DataField>Menu_Main_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Line_Colour">
+          <DataField>Menu_Main_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Main_Line_Width">
+          <DataField>Menu_Main_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Family">
+          <DataField>Menu_Sub_Font_Family</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Size">
+          <DataField>Menu_Sub_Font_Size</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Colour">
+          <DataField>Menu_Sub_Font_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Bold">
+          <DataField>Menu_Sub_Font_Bold</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Font_Italic">
+          <DataField>Menu_Sub_Font_Italic</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Fill_Colour">
+          <DataField>Menu_Sub_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Line_Colour">
+          <DataField>Menu_Sub_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Menu_Sub_Line_Width">
+          <DataField>Menu_Sub_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rectangle_Main_Fill_Colour">
+          <DataField>Rectangle_Main_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rectangle_Main_Line_Colour">
+          <DataField>Rectangle_Main_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Rectangle_Main_Line_Width">
+          <DataField>Rectangle_Main_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page_Header_Background_Colour">
+          <DataField>Page_Header_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page_Normal_Background_Colour">
+          <DataField>Page_Normal_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page_Footer_Background_Colour">
+          <DataField>Page_Footer_Background_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Fill_Colour">
+          <DataField>Tablix_Header_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Line_Colour">
+          <DataField>Tablix_Header_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Header_Line_Width">
+          <DataField>Tablix_Header_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Fill_Colour">
+          <DataField>Tablix_Row_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Line_Colour">
+          <DataField>Tablix_Row_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Line_Width">
+          <DataField>Tablix_Row_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt1_Fill_Colour">
+          <DataField>Tablix_Row_Alt1_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt1_Line_Colour">
+          <DataField>Tablix_Row_Alt1_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt1_Line_Width">
+          <DataField>Tablix_Row_Alt1_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt2_Fill_Colour">
+          <DataField>Tablix_Row_Alt2_Fill_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt2_Line_Colour">
+          <DataField>Tablix_Row_Alt2_Line_Colour</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Tablix_Row_Alt2_Line_Width">
+          <DataField>Tablix_Row_Alt2_Line_Width</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Red">
+          <DataField>Indication_Colour_Red</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Red_Light">
+          <DataField>Indication_Colour_Red_Light</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Amber">
+          <DataField>Indication_Colour_Amber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Green_Light">
+          <DataField>Indication_Colour_Green_Light</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Indication_Colour_Green">
+          <DataField>Indication_Colour_Green</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Blue">
+          <DataField>Transparent_Colour_Light_Blue</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Green">
+          <DataField>Transparent_Colour_Light_Green</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Red">
+          <DataField>Transparent_Colour_Light_Red</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Pink">
+          <DataField>Transparent_Colour_Light_Pink</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Orange">
+          <DataField>Transparent_Colour_Light_Orange</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Purple">
+          <DataField>Transparent_Colour_Light_Purple</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Yellow">
+          <DataField>Transparent_Colour_Light_Yellow</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Teal">
+          <DataField>Transparent_Colour_Light_Teal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Brown">
+          <DataField>Transparent_Colour_Light_Brown</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Transparent_Colour_Light_Violet">
+          <DataField>Transparent_Colour_Light_Violet</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Subreport Name="SubReport_Ribbon_Main">
+            <ReportName>Portal_Ribbon_Main</ReportName>
+            <Parameters>
+              <Parameter Name="ReportPassedIn">
+                <Value>=Parameters!Report.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Height>1.58496in</Height>
+            <Width>18in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Rectangle Name="Rectangle_Main">
+            <ReportItems>
+              <Textbox Name="Textbox_Monitoring_Header">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="Monitoring"</Value>
+                        <Style>
+                          <FontStyle>=First(Fields!Text_Header_2_Font_Italic.Value, "Report_Settings")</FontStyle>
+                          <FontFamily>=First(Fields!Text_Header_2_Font_Family.Value, "Report_Settings")</FontFamily>
+                          <FontSize>=First(Fields!Text_Header_2_Font_Size.Value, "Report_Settings")</FontSize>
+                          <FontWeight>=First(Fields!Text_Header_2_Font_Bold.Value, "Report_Settings")</FontWeight>
+                          <Color>=First(Fields!Text_Header_2_Font_Colour.Value, "Report_Settings")</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.17639cm</Top>
+                <Left>0.26458cm</Left>
+                <Height>0.6cm</Height>
+                <Width>44.41cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>4.0258cm</Top>
+            <Left>0.3937cm</Left>
+            <Height>1.96353cm</Height>
+            <Width>44.98234cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <TopBorder>
+                <Color>=First(Fields!Rectangle_Main_Line_Colour.Value, "Report_Settings")</Color>
+                <Width>=First(Fields!Rectangle_Main_Line_Width.Value, "Report_Settings")</Width>
+              </TopBorder>
+              <BottomBorder>
+                <Color>=First(Fields!Rectangle_Main_Line_Colour.Value, "Report_Settings")</Color>
+                <Width>=First(Fields!Rectangle_Main_Line_Width.Value, "Report_Settings")</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Color>=First(Fields!Rectangle_Main_Line_Colour.Value, "Report_Settings")</Color>
+                <Width>=First(Fields!Rectangle_Main_Line_Width.Value, "Report_Settings")</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Color>=First(Fields!Rectangle_Main_Line_Colour.Value, "Report_Settings")</Color>
+                <Width>=First(Fields!Rectangle_Main_Line_Width.Value, "Report_Settings")</Width>
+              </RightBorder>
+              <BackgroundColor>=First(Fields!Rectangle_Main_Fill_Colour.Value, "Report_Settings")</BackgroundColor>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle3">
+            <ReportItems>
+              <Subreport Name="SubReport_Footer">
+                <ReportName>Portal_Footer</ReportName>
+                <Height>0.36703in</Height>
+                <Width>18in</Width>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>=First(Fields!Page_Footer_Background_Colour.Value, "Report_Settings")</Color>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>=First(Fields!Page_Footer_Background_Colour.Value, "Report_Settings")</Color>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>=First(Fields!Page_Footer_Background_Colour.Value, "Report_Settings")</Color>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>=First(Fields!Page_Footer_Background_Colour.Value, "Report_Settings")</Color>
+                  </RightBorder>
+                </Style>
+              </Subreport>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>6.53676cm</Top>
+            <Height>0.36703in</Height>
+            <Width>18in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>2.94056in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BackgroundColor>=First(Fields!Page_Normal_Background_Colour.Value, "Report_Settings")</BackgroundColor>
+        </Style>
+      </Body>
+      <Width>18in</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Report">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>=Globals!ReportName</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Report</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ReportThemeID">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>Report_Info</DataSetName>
+          <ValueField>ReportThemeID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>ReportThemeID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="ThemeID">
+      <DataType>Integer</DataType>
+      <Prompt>Theme ID</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Report</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ReportThemeID</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>ThemeID</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>20286c24-7e45-44d0-be8f-27d44e7643db</rd:ReportID>
+</Report>

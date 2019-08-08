@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="ReportsPortal_Shared">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=SSRS-2017\SQLEXPRESS;Initial Catalog=ReportsPortal</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>a962c6e6-41af-4ccf-8792-57ed75302ec7</DataSourceID>
+</RptDataSource>

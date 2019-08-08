@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "DartsaveCustomerList", "DartsaveCustomerList.rptproj", "{E885373A-9345-47BC-8041-796BE8ED4EDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.Debug|Default.ActiveCfg = Debug
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.Debug|Default.Build.0 = Debug
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.Debug|Default.Deploy.0 = Debug
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.DebugLocal|Default.Build.0 = DebugLocal
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.Release|Default.ActiveCfg = Release
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.Release|Default.Build.0 = Release
+		{E885373A-9345-47BC-8041-796BE8ED4EDE}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB227A0C-FD59-42F8-A698-28DF25BD65CD}
+	EndGlobalSection
+EndGlobal
