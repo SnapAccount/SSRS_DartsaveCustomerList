@@ -2,7 +2,7 @@
 <RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Dartsave_shared">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=88.208.228.16;Initial Catalog=DartSave</ConnectString>
+    <ConnectString>Data Source=SSRS-2017\SQLEXPRESS;Initial Catalog=Dartsave</ConnectString>
   </ConnectionProperties>
   <DataSourceID>9ee380d3-9434-4bb7-a451-7ba6ab4bf707</DataSourceID>
 </RptDataSource>
